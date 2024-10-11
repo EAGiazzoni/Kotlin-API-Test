@@ -8,6 +8,8 @@ import vettest.demo.Clientes.DTO.CreateClienteDTO
 import vettest.demo.Clientes.DTO.UpdatedClienteDTO
 import vettest.demo.Clientes.Entity.ClienteEntity
 import vettest.demo.Clientes.Repository.ClienteRepository
+import vettest.demo.Enums.Errors
+import vettest.demo.Exceptions.NotFoundException
 
 @Service
 class ClientesService (
@@ -46,7 +48,7 @@ class ClientesService (
     }
 
     fun getClienteById(id: Int): ClienteEntity? {
-        return clienteRepository.findById(id).orElseThrow()
+        return clienteRepository.findById(id).orElseThrow{ NotFoundException(Errors.ClEr404.message.format(id), Errors.ClEr404.code ) }
     }
 
     fun deleteCliente(id: Int) {

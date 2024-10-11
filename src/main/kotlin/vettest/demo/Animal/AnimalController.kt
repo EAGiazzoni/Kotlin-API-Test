@@ -1,5 +1,6 @@
 package vettest.demo.Animal
 
+import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.*
 import vettest.demo.Animal.Converter.toAnimalCreate
 import vettest.demo.Animal.DTO.CreateAnimalDTO
@@ -26,7 +27,7 @@ class AnimalController(
     }
 
     @PostMapping
-    fun postAnimal(@RequestBody animal: CreateAnimalDTO) {
+    fun postAnimal(@RequestBody @Valid animal: CreateAnimalDTO) {
         animalService.createAnimal(animal.toAnimalCreate(tipoService, clienteService))
     }
 

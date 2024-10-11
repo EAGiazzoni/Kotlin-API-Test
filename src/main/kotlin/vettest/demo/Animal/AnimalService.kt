@@ -5,6 +5,8 @@ import vettest.demo.Animal.DTO.UpdateAnimalDTO
 import vettest.demo.Animal.Entity.AnimalEntity
 import vettest.demo.Animal.Repository.AnimalRepository
 import vettest.demo.Clientes.ClientesService
+import vettest.demo.Enums.Errors
+import vettest.demo.Exceptions.NotFoundException
 import vettest.demo.Tipo.TipoService
 
 @Service
@@ -46,7 +48,7 @@ class AnimalService(
     }
 
     fun getAnimalById(id: Int): AnimalEntity? {
-        return animalRepository.findById(id).orElseThrow()
+        return animalRepository.findById(id).orElseThrow{NotFoundException(Errors.AnEr404.message.format(id), Errors.AnEr404.code )}
     }
 
     fun deleteAnimalById(id: Int) {

@@ -1,8 +1,8 @@
 package vettest.demo.Response
 
-data class ErrorResponse (
+data class ErrorResponse(
     var httpCode: Int,
     var message: String,
-    var internalCode: Int,
+    var internalCode: String,
     var errors: List<FieldErrorResponse>?
 )

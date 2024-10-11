@@ -6,3 +6,5 @@ spring:
     url: jdbc:mysql://localhost:3306/teste5?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC&useSSL=false
     username: root
     password: root
+  jackson:
+    default-property-inclusion: non_null
